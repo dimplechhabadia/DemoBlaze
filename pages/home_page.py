@@ -1,6 +1,5 @@
-from base_page import BasePage
-from category_page import CategoryPage
-
+from pages.base_page import BasePage
+from pages.category_page import CategoryPage
 
 class HomePage(BasePage):
     def __init__(self, page):

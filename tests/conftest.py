@@ -9,7 +9,7 @@ browsers_to_test = ["chromium"]
 def setup(request):
     browser_name = request.param
     with sync_playwright() as p:
-        browser = getattr(p, browser_name).launch(headless=False)
+        browser = getattr(p, browser_name).launch(headless=True)
         context = browser.new_context()
         page = context.new_page()
         yield page

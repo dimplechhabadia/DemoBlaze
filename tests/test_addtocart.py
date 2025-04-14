@@ -1,8 +1,8 @@
 import pytest
 
-from cart_page import CartPage
-from home_page import HomePage
-from login_page import LoginPage
+from pages.cart_page import CartPage
+from pages.home_page import HomePage
+from pages.login_page import LoginPage
 from utils.data_loader import load_json
 
 test_data = load_json('product_data.json')
