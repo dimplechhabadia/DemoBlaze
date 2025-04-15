@@ -6,10 +6,10 @@ from utils.data_loader import load_json
 browsers_to_test = ["chromium"]
 
 @pytest.fixture(params=browsers_to_test, scope="function" )
-def setup(request):
+def page(request):
     browser_name = request.param
     with sync_playwright() as p:
-        browser = getattr(p, browser_name).launch(headless=True)
+        browser = getattr(p, browser_name).launch(headless=False)
         context = browser.new_context()
         page = context.new_page()
         yield page

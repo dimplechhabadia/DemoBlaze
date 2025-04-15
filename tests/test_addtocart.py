@@ -8,16 +8,14 @@ from utils.data_loader import load_json
 test_data = load_json('product_data.json')
 
 @pytest.fixture
-def perform_login(setup, url, valid_user):
-    page = setup
+def perform_login(page, url, valid_user):
     login_page = LoginPage(page)
     login_page.open(url)
     login_page.open_login_modal()
     home_page = login_page.login(valid_user["username"], valid_user["password"])
     return home_page
 
-def test_add_products(setup, perform_login):
-    page = setup
+def test_add_products(page, perform_login):
     home_page = HomePage(page)
 
     for category in test_data["categories"]:

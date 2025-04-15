@@ -7,9 +7,6 @@ class BasePage:
     def open(self, url: str):
         self.page.goto(url)
 
-    def find_element(self, selector: str):
-        return self.page.query_selector(selector)
-
     def click(self, selector: str):
         self.page.click(selector)
 

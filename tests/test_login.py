@@ -17,17 +17,17 @@ def perform_login(page, user):
 
 
 @pytest.mark.parametrize('user', test_data["users"])
-def test_login(setup, user):
-	page = setup
+def test_login(page, user):
 	login_page = perform_login(page, user)
 
 	welcome_text = login_page.get_welcome_text()
 	print(f"Message is, {welcome_text}")
-	expect(login_page.page.locator(login_page.welcome_message_selector)).to_contain_text("Welcome")
+	assert "Welcome" in login_page.get_welcome_text()
+	#expect(login_page.page.locator(login_page.welcome_message_selector)).to_contain_text("Welcome")
 
 
 @pytest.mark.parametrize('user', test_data["invalid_users"])
-def test_invalid_login(setup, user):
-	page = setup
+def test_invalid_login(page, user):
+
 	alert_text = handle_dialog(page, lambda: perform_login(page, user))
-	assert "wrong" in alert_text.lower() or "fill out" in alert_text.lower()
+	assert "wrong" in alert_text.lower()
